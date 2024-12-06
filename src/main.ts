@@ -18,20 +18,8 @@ button.addEventListener("click", () => {
 		return;
 	}
 
-	const transition = document.startViewTransition(() => {
+	document.startViewTransition(() => {
 		currentIndex = (currentIndex + 1) % messages.length;
 		content.textContent = messages[currentIndex];
-	});
-
-	transition.ready.then(() => {
-		// Visibly disable the button
-		button.style.pointerEvents = "none";
-		button.style.opacity = "0";
-	});
-
-	transition.finished.then(() => {
-		// Re-enable the button
-		button.style.pointerEvents = "auto";
-		button.style.opacity = "1";
 	});
 });
